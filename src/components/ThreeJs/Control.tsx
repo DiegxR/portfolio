@@ -16,14 +16,14 @@ useEffect(() => {
 }, [])
 
   useEffect(() => {
-    const updateMousePosition = (ev) => {
+    const updateMousePosition = (ev: any) => {
       setMousePosition({
         x: (ev.clientX / window.innerWidth) * 2 - 1,
         y: -(ev.clientY / window.innerHeight) * 2 + 1,
       });
     };
 
-    const handleWheel = (ev) => {
+    const handleWheel = (ev: any) => {
       ev.preventDefault();
       setZoom((prevZoom) => {
         const newZoom = prevZoom + ev.deltaY * 0.03;
