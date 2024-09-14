@@ -7,7 +7,7 @@ const AmbientSound = () => {
     useEffect(() => {
       const handleUserInteraction = () => {
         if (audioRef.current) {
-          audioRef.current.play();
+         ( audioRef as any).current.play();
           (audioRef as any).current.volume = 0.08;
         }
       };
