@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback, LegacyRef } from "react";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useViewContext } from "@/lib/context/ViewContext";
@@ -7,7 +7,7 @@ import { useViewContext } from "@/lib/context/ViewContext";
 const Control = () => {
   const { viewState, transition } = useViewContext();
   const { camera } = useThree();
-  const controlsRef = useRef();
+  const controlsRef = useRef<any>();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [autorotate, setAutorotate] = useState(false);
   const [zoom, setZoom] = useState(15); // Nuevo estado para el zoom
