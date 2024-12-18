@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ViewStateProvider>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet"/>      <ViewStateProvider>
       <body className={inter.className}>{children}</body>
       </ViewStateProvider>
     </html>

@@ -8,9 +8,11 @@ import Meteors from "../magicui/meteors";
 import ShimmerButton from "../magicui/shimmer-button";
 import ShinyButton from "../magicui/shiny-button";
 import CarSound from "../Sounds/CarSound";
+import MotionText from "../MotionText";
+import Landing from "./Landing";
 
 const IntroPage = () => {
-  const { transition, viewState, toggleView } = useViewContext();
+  const { transition, viewState } = useViewContext();
   return (
     <>
       <motion.div
@@ -26,21 +28,30 @@ const IntroPage = () => {
         <Meteors number={viewState ? 10 : 0} />
       </motion.div>
       {!viewState ? (
-        <section className="flex flex-col md:flex-row absolute w-screen z-[99]">
-          <Title />
-          <section className="w-[50%] h-screen flex items-center justify-center ">
-            <Menu />
-          </section>
-        </section>
-      ) : (
-        <div className="flex flex-col md:flex-row absolute w-screen z-[99]">
-          <CarSound />
-          <header className="w-full h-[150px] p-5 px-20 flex items-center justify-between">
-            <span onClick={()=> toggleView()} className="icon-[system-uicons--home] text-white text-2xl cursor-pointer hover:"></span>
-            <div>
-              <ShinyButton className="bg-white" text="Mis Proyectos" />
+        <>
+          <section className="flex flex-col md:flex-row absolute w-screen z-[99]">
+            <div
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              className="absolute  flex justify-center w-full animate-in top-14 z-[99]"
+            >
+              <div className="bg-gradient-to-br from-slate-900/30 rounded-[20px] to-slate-800/30 backdrop-blur-[0.2px] shadow-sm shadow-slate-600 px-5 py-2">
+                <MotionText
+                rotate
+                  className="text-white arrayFont font-extrabold text-[25px] decoration-slice"
+                  text="JUAN DIEGO ROJAS"
+                />
+              </div>
             </div>
-          </header>
+            <Title />
+            <section className="w-[50%] h-screen flex items-center justify-center ">
+              <Menu />
+            </section>
+          </section>
+        </>
+      ) : (
+        <div className="flex overflow-y-scroll h-screen flex-col md:flex-row absolute w-full z-[99]">
+          <CarSound />
+         <Landing/>
         </div>
       )}
     </>

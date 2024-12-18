@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 
 @layer base {
   :root {
@@ -58,7 +59,14 @@
     --chart-5: 340 75% 55%;
   }
 }
-
+.font1 {
+  font-family: "Rubik Doodle Shadow", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.arrayFont{
+  font-family: 'Clash Display', sans-serif;
+}
 @layer base {
   * {
     @apply border-border;
@@ -66,4 +74,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.text-shadow {
+  @apply text-black; /* Color del texto */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
