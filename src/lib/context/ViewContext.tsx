@@ -1,10 +1,11 @@
 'use client'
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 interface ViewStateType {
   viewState: boolean;
   toggleView: () => void;
   transition: boolean;
+  stationRef: any
 }
 
 export const ViewStateContext = createContext<ViewStateType | undefined>(
@@ -14,6 +15,7 @@ export const ViewStateContext = createContext<ViewStateType | undefined>(
 export const ViewStateProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
+  const stationRef = useRef(); // Referencia para el div
   const [viewState, setViewState] = useState<boolean>(false);
   const [transition, setTransition] = useState<boolean>(false)
   const toggleView = () => {
@@ -24,7 +26,7 @@ export const ViewStateProvider: React.FC<{
     }, 2800);
   };
 
-  const value: ViewStateType = { viewState, toggleView, transition };
+  const value: ViewStateType = { viewState, toggleView, transition, stationRef };
 
   return (
     <ViewStateContext.Provider value={value}>
