@@ -54,7 +54,7 @@ const Title = () => {
           <MotionText className="arrayFont text-[35px]" text="Desarrollador FullStack" />
         </h1>
         <p className="text-[20px] px-4 mt-2 w-[550px]" style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
-          <MotionText className="arrayFont" text="Transformando ideas en código y experiencias innovadoras." />
+          <MotionText text="Transformando ideas en código y experiencias innovadoras." />
         </p>
         <div className="flex select-none cursor-pointer mt-8 mb-2 gap-10">
           <motion.span

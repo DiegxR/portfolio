@@ -66,7 +66,7 @@ const ThreeScene = ({ children }: { children: React.ReactNode }) => {
     <Canvas style={{ height: "100vh" }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
-      {viewState ? <></> : <CursorTrail />}
+      {viewState && <CursorTrail />}
       {children}
     </Canvas>
   );
