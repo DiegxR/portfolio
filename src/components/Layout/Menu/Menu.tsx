@@ -89,18 +89,6 @@ const Menu = () => {
                 ></motion.span>
               </div>
             </div>
-            {/* <div className="flex flex-col text-center w-[150px]">
-              <p>Mueve el cursos del mouse</p>
-              <span className="icon-[mdi--mouse-move-vertical] mx-auto"></span>
-            </div>
-            <div className="flex text-center w-[150px] flex-col">
-              <p>Click y hover para interactuar</p>
-              <span className="icon-[mdi--mouse-left-click-outline] mx-auto"></span>
-            </div>
-            <div className="flex text-center w-[150px] flex-col">
-              <p>Scroll para hacer zoom</p>
-              <span className="icon-[basil--mouse-alt-outline] mx-auto"></span>
-            </div> */}
           </div>
         </div>
 

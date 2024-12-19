@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ViewStateProvider } from "@/lib/context/ViewContext";
+import ThreeScene from "@/components/ThreeJs/ThreeScene";
+import Objects from "@/components/ThreeJs/Objects";
+import Control from "@/components/ThreeJs/Control";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet"/>      <ViewStateProvider>
-      <body className={inter.className}>{children}</body>
+      <link
+        href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap"
+        rel="stylesheet"
+      />{" "}
+      <ViewStateProvider>
+        <body className={`${inter.className}`}>
+          {children}
+          <ThreeScene>
+            <color attach="background" args={["#161c24"]} />
+            <Objects color="#00ff00" position={[-1, 0, 0]} />
+            <ambientLight />
+            <Control />
+          </ThreeScene>
+        </body>
       </ViewStateProvider>
     </html>
   );

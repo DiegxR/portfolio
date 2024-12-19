@@ -1,18 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Title from "./Title/Title";
 import Menu from "./Menu/Menu";
 import { motion } from "framer-motion";
 import { useViewContext } from "@/lib/context/ViewContext";
 import Meteors from "../magicui/meteors";
-import ShimmerButton from "../magicui/shimmer-button";
-import ShinyButton from "../magicui/shiny-button";
-import CarSound from "../Sounds/CarSound";
 import MotionText from "../MotionText";
-import Landing from "./Landing";
+import { useRouter } from "next/navigation";
+
 
 const IntroPage = () => {
   const { transition, viewState } = useViewContext();
+  const router = useRouter()
+  useEffect(() => {
+   if(viewState){
+    setTimeout(() => {
+      router.push("/landing")
+    }, 1000);
+   }
+  }, [viewState, router])
+  
   return (
     <>
       <motion.div
@@ -36,7 +43,7 @@ const IntroPage = () => {
             >
               <div className="bg-gradient-to-br from-slate-900/30 rounded-[20px] to-slate-800/30 backdrop-blur-[0.2px] shadow-sm shadow-slate-600 px-5 py-2">
                 <MotionText
-                rotate
+                  rotate
                   className="text-white arrayFont font-extrabold text-[25px] decoration-slice"
                   text="JUAN DIEGO ROJAS"
                 />
@@ -49,10 +56,7 @@ const IntroPage = () => {
           </section>
         </>
       ) : (
-        <div className="flex overflow-y-scroll h-screen flex-col md:flex-row absolute w-full z-[99]">
-          <CarSound />
-         <Landing/>
-        </div>
+        <></>
       )}
     </>
   );

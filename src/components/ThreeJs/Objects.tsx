@@ -18,8 +18,7 @@ const CustomModel = () => {
   const clouds = useLoader(TextureLoader, "/clouds.jpeg");
   const car = useLoader(TextureLoader, "/carTexture.png");
   const ref: any = useRef();
- 
-  
+
   useFrame(() => {
     if (ref.current) {
       ref.current.rotation.y += 0.001; // Ajusta la velocidad de rotación aquí
@@ -33,7 +32,7 @@ const CustomModel = () => {
           bumpMap: earthMask,
           roughnessMap: clouds,
           roughness: 1,
-          metalnessMap: textureOcean
+          metalnessMap: textureOcean,
         });
       }
     });
@@ -52,7 +51,6 @@ const CustomModel = () => {
         position={[0, viewState ? -0.03 : 0, viewState ? -1.75 : 0]}
         scale={[2, 2, 2]}
       />
-      ;
       <primitive
         ref={ref}
         rotation={[-0.5, 5, 0]}
@@ -60,12 +58,7 @@ const CustomModel = () => {
         position={[0, -8, -35]}
         scale={[15, 15, 15]}
       />
-      ;
-      {viewState ? (
-        <Station/>
-      ) : (
-        <></>
-      )}
+      {viewState ? <Station /> : <></>}
     </>
   );
 };
@@ -80,7 +73,11 @@ const Objects = ({ color, position }: { color: string; position: any }) => {
         color="white"
         castShadow
       />
-      <directionalLight position={[!viewState ? 10 : 50,-10, -5]} intensity={5} color="#FFCC33" />
+      <directionalLight
+        position={[!viewState ? 10 : 50, -10, -5]}
+        intensity={5}
+        color="#FFCC33"
+      />
       <CustomModel />
       <EffectComposer>
         <Bloom
