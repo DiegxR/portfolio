@@ -7,6 +7,7 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { useViewContext } from "@/lib/context/ViewContext";
 import Station from "./Objects/Station";
+import Satellite from "./Objects/Satellite";
 const CustomModel = () => {
   // Cargar el modelo GLTF// Reemplaza con la ruta a tu archivo .glb
   const { viewState } = useViewContext();
@@ -58,7 +59,14 @@ const CustomModel = () => {
         position={[0, -8, -35]}
         scale={[15, 15, 15]}
       />
-      {viewState ? <Station /> : <></>}
+      {viewState ? (
+        <>
+          <Station />
+          <Satellite />
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

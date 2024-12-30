@@ -1,5 +1,5 @@
 "use client";
-import React, { LegacyRef, RefObject, useRef } from "react";
+import React, { LegacyRef, RefObject, useEffect, useRef } from "react";
 import ShinyButton from "../magicui/shiny-button";
 import { useViewContext } from "@/lib/context/ViewContext";
 import { Button } from "@nextui-org/button";
@@ -12,6 +12,29 @@ const Landing = () => {
     useViewContext();
   const ref = useRef<any>();
   setStationRef(ref);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (container) {
+        container.scrollTop += e.deltaY; // Controla el desplazamiento vertical
+        e.preventDefault(); // Evita el comportamiento predeterminado
+      }
+    };
+
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, []);
+
   return (
     <>
       <motion.div
@@ -24,9 +47,9 @@ const Landing = () => {
         transition={{ duration: 3, ease: "easeOut" }}
         className="absolute top-[230px] left-0 z-[50] -translate-x-[500px] w-[100%] lg:block"
       >
-        <Meteors number={30} />
+        <Meteors number={15} />
       </motion.div>
-      <div className="flex overflow-y-scroll h-screen flex-col md:flex-row absolute w-full z-[98]">
+      <div ref={containerRef} className="flex overflow-y-scroll h-screen flex-col md:flex-row absolute w-full z-[98]">
         <div ref={ref} className="w-full">
           <header className="w-full fixed z-[99] h-[80px] bg-slate-600/40 py-1 px-16 flex items-center justify-between">
             <span
@@ -117,7 +140,7 @@ const Landing = () => {
 
           <footer className="mt-32 py-8 text-center bg-black/70 backdrop-blur-sm text-white">
             <p>
-              &copy; 2024 Juan Desarrollador. Todos los derechos reservados.
+              &copy; 2024 Juan Diego Rojas Desarrollador Full Stack. Todos los derechos reservados.
             </p>
           </footer>
         </div>
