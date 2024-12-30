@@ -4,6 +4,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Line, Cone } from "@react-three/drei";
 import * as THREE from "three";
 import { useViewContext } from "@/lib/context/ViewContext";
+import LoadingPage from "../LoadingPage";
 
 const CursorTrail = () => {
   const [points, setPoints] = useState<THREE.Vector3[]>(() => [
@@ -24,6 +25,8 @@ const CursorTrail = () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+ 
+
 
   useFrame(() => {
     setPoints((prevPoints) => {
@@ -60,15 +63,27 @@ const CursorTrail = () => {
 };
 
 const ThreeScene = ({ children }: { children: React.ReactNode }) => {
+  const [loading, setLoading] = useState(true);
   const { viewState } = useViewContext();
-  const ref = useRef();
+  setTimeout(() => {
+    setLoading(false); // Simula que la carga se ha completado
+  }, 5000);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false); // Simula que la carga se ha completado
+    }, 5000); // Ajusta el tiempo según lo que esté cargando realmente
+  }, []);
+
   return (
+    <>
+    {loading ? <LoadingPage/> : <></>}
     <Canvas style={{ height: "100vh" }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       {viewState && <CursorTrail />}
       {children}
     </Canvas>
+    </>
   );
 };
 

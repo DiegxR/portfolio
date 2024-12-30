@@ -1,19 +1,19 @@
 import { useViewContext } from "@/lib/context/ViewContext";
 import { useGLTF } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { MeshStandardMaterial, TextureLoader } from "three";
 
-const Station = () => {
+const Satellite = () => {
   const { stationRef: targetRef } = useViewContext();
 
-  const [position, setPosition] = useState([-150, -150, 1000]); // Estado objetivo
-  const [currentPosition, setCurrentPosition] = useState([-150, -150, 1000]); // Estado suavizado
+  const [position, setPosition] = useState([400, -50, 1000]); // Estado objetivo
+  const [currentPosition, setCurrentPosition] = useState([400, -50, 1000]); // Estado suavizado
 
   // Función de interpolación lineal
   const lerp = (start: number, end: number, t: number) =>
     start + t * (end - start);
-
+  useEffect(() => {}, [currentPosition]);
   useEffect(() => {
     const target = targetRef.current;
 
@@ -24,9 +24,9 @@ const Station = () => {
           const ratio = 1 - entry.intersectionRatio; // Ratio de visibilidad entre 0 y 1
 
           // Posiciones objetivo interpoladas linealmente
-          const newX = -150; // X permanece constante
-          const newY = -150; // Y permanece constante
-          const newZ = 1000 + ratio * -850; // De 700 a 50: resta 650 progresivamente
+          const newX = 400; // X permanece constante
+          const newY = -100; // Y permanece constante
+          const newZ = 1000 + ratio * -600; // De 700 a 50: resta 650 progresivamente
 
           setPosition([newX, newY, newZ]); // Actualiza posición objetivo
         });
@@ -54,28 +54,35 @@ const Station = () => {
     return () => clearInterval(interval);
   }, [position]);
 
-  const stationRef: any = useRef();
-  const { scene: station } = useGLTF("/spaceStation/scene.gltf");
-  const [rotation, setRotation] = useState([10, -10, 5]);
+  const satelliteRef: any = useRef();
+  const { scene: satellite } = useGLTF("/satelite/scene.gltf");
+  const [rotation, setRotation] = useState([20, -20, 5]);
   const stationTexture1 = useLoader(
     TextureLoader,
-    "/spaceStation/textures/stationTexture1.png"
+    "/satelite/textures/satelliteTexture1.png"
   );
   const stationTexture2 = useLoader(
     TextureLoader,
-    "/spaceStation/textures/stationTexture2.png"
+    "/satelite/textures/satelliteTexture2.png"
+  );
+  const stationTexture3 = useLoader(
+    TextureLoader,
+    "/satelite/textures/satelliteTexture3.png"
   );
   React.useEffect(() => {
-    station.traverse((child: any) => {
+    satellite.traverse((child: any) => {
       if (child.isMesh) {
         child.material = new MeshStandardMaterial({
           map: stationTexture1,
           aoMapIntensity: 90,
+          alphaMap: stationTexture2,
+          envMap: stationTexture3,
+          blendColor: "black",
           opacity: 0,
         });
       }
     });
-  }, [station, stationTexture1, stationTexture2]);
+  }, [satellite, stationTexture1, stationTexture2, stationTexture3]);
   useEffect(() => {
     const handleMouseMove = (event: any) => {
       const { clientX, clientY } = event;
@@ -92,7 +99,7 @@ const Station = () => {
       const rotY = x * Math.PI * 0.003; // Limita el rango de rotación en el eje Y
 
       // Actualiza la rotación
-      setRotation([0, rotation[1] + rotX + rotY, 0]);
+      setRotation([6, 9, rotX + rotY + rotation[2]]);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -102,12 +109,12 @@ const Station = () => {
 
   return (
     <primitive
-      ref={stationRef}
+      ref={satelliteRef}
       rotation={rotation}
       position={currentPosition}
-      scale={[2, 2, 2]}
-      object={station}
+      scale={[3, 3, 3]}
+      object={satellite}
     />
   );
 };
-export default Station;
+export default Satellite;

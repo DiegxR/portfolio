@@ -33,11 +33,12 @@ export const ViewStateProvider: React.FC<{
   };
   useEffect(() => {
     console.log(path)
-    if(path === "/landing"){
+    if(path === "/landing" || path.includes("projectDetail")){
       setViewState(true)
     }else{
       console.log(path)
       setViewState(false)
+
     }
   }, [path])
   
