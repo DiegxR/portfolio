@@ -119,26 +119,28 @@ export const projectsArray: Project[] = [
       {
         images: [
           "https://drive.google.com/uc?id=1l0bs4syJs9C0WAXgIGPq22Zkf2mIozWq",
+          "https://drive.google.com/uc?id=17UpthvMLMZzNOVxPLAoiR2Y0m1VgS87M"
         ],
-        title: "General",
+        title: "Usuarios y Autenticación",
         description:
-          "Por temas de seguridad no puedo compartir mucha información de esta iniciativa, pero aquí un poco del FrontEnd con el cuál se genera los usuarios desde el admin, y los códigos qrs para las colonias",
+          "Para esta plataforma creé el inicio de sesión para usuarios tanto administradores como super administrador, para el super administrador se desarrollo una pantalla donde puede crear usuarios de tipo administrador",
         icons: [
           { icon: "icon-[cib--next-js]", name: "Next Js" },
-          { icon: "icon-[simple-icons--axios]", name: "Axios" },
+          { icon: "icon-[file-icons--tailwind]", name: "Tailwind Css" },
         ],
         link: "",
         tag: "FrontEnd",
       },
       {
         images: [
-          "https://drive.google.com/uc?id=1QJ_jrpd668dAIqUvhzA8-gQrhBtN9Atn",
+          "https://drive.google.com/uc?id=1kmLDkYT2oS_Y91pGX-VTw76d3-s0OnQY",
+          "https://drive.google.com/uc?id=1LccWPTIkvs_CqtGdIx1PI9TA4GxupBzO"
         ],
-        title: "Autenticación",
+        title: "Creación de qrs",
         description:
-          "En esta plataforma también se estructuró la creación de usuarios con Firebase, donde se gestiona la información y seguridad de cada cliente a través de esta plataforma de autenticación, todas las pantallas se estilizaron usando tailwind",
+          "También cree una vista para el usuario administrador donde puede crear meliponarios, y dentro de cada meliponario se pueden crear colonias, cada una de estas colonias se crean con un identificador único y un código qr que se puede escanear a través de una app que también desarrollé",
         icons: [
-          { icon: "icon-[devicon--firebase]", name: "Firebase" },
+          { icon: "icon-[fontisto--react]", name: "Flowbite React" },
           { icon: "icon-[file-icons--tailwind]", name: "Tailwind Css" },
         ],
         link: "https://latamverify.com/login",
@@ -146,17 +148,32 @@ export const projectsArray: Project[] = [
       },
       {
         images: [
-          "https://drive.google.com/uc?id=1JL0xkkLg2E1ckdre1f1PsvIorY7aNiie",
+          "https://drive.google.com/uc?id=1y99BB8i1ET0DmRo_HMr8-uwvKuvSq9be",
+          "https://drive.google.com/uc?id=1wwkvsi4MLXuxz5aAEeF3AmjbigxlI45d",
+          "https://drive.google.com/uc?id=196kiBEQ-wRx0EQDCOp0hN5G0I8CGuJp-",
+          "https://drive.google.com/uc?id=1t6PevGiPaHEQLa_tEudiGXJIWJnmNmO3"
         ],
-        title: "Pagos",
+        title: "App Mobile",
         description:
-          "Se implementó la pasarela de pagos de stripe para adquirir una suscripción y poder tener acceso a las busquedas mensuales dependiendo del plan adquirido por cada uno de los usuarios anteriormente creados en firebase",
-        icons: [{ icon: "icon-[bi--stripe]", name: "Stripe" }],
+          "La app mobile se utiliza para hacer seguimiendo de las colonias asignadas por cada meliponario donde se puede hacer el control de cada una de ellas",
+        icons: [{ icon: "icon-[fontisto--react]", name: "React Native" }, { icon: "icon-[logos--expo]", name: "Expo" }],
+        link: "https://latamverify.com/subscription",
+        tag: "FrontEnd",
+      },
+      {
+        images: [
+          "https://drive.google.com/uc?id=1aXKZdwS9CZzNNOrPAbMj-PkJDrL85fxJ",
+          "https://drive.google.com/uc?id=1711-xig4mLlRUNNj8pk1liWNSIMli_xB",
+        ],
+        title: "Microservicio Backend",
+        description:
+          "Desde el backend se maneja la creación de usuarios administradores, que a su vez pueden crear usuarios para la app de control y seguimiento también pueden crear meliponarios y colonias con su respectivo id y código qr, también se maneja el logueo de cada usuario",
+        icons: [{ icon: "icon-[devicon--nestjs]", name: "Nest js" }, { icon: "icon-[devicon--postgresql]", name: "Postgresql" }],
         link: "https://latamverify.com/subscription",
         tag: "FrontEnd",
       },
     ],
-    tags: ["FrontEnd"],
+    tags: ["FrontEnd", "BackEnd"],
   },
   
   // {
