@@ -49,7 +49,10 @@ const Landing = () => {
       >
         <Meteors number={15} />
       </motion.div>
-      <div ref={containerRef} className="flex overflow-y-scroll h-screen flex-col md:flex-row absolute w-full z-[98]">
+      <div
+        ref={containerRef}
+        className="flex overflow-y-scroll h-screen flex-col md:flex-row absolute w-full z-[98]"
+      >
         <div ref={ref} className="w-full">
           <header className="w-full fixed z-[99] h-[80px] bg-slate-600/40 py-1 px-16 flex items-center justify-between">
             <span
@@ -57,10 +60,21 @@ const Landing = () => {
               className="icon-[system-uicons--home] text-white text-2xl cursor-pointer hover:"
             ></span>
             <div className="flex items-center gap-5">
-              <Button className="px-2 py-1 bg-black text-white font-normal w-[100px] rounded-[8px] h-[38px]">
-                Inicio
+              <a href="#inicio">
+                <Button className="px-2 py-1 bg-black text-white font-normal w-[100px] rounded-[8px] h-[38px]">
+                  Inicio
+                </Button>
+              </a>
+              <a  href="#proyectos">
+                <ShinyButton className="bg-white" text="Mis Proyectos" />
+              </a>
+              <a  href="#habilidades">
+              <Button
+                className="px-2 py-1 bg-black text-white font-normal w-[100px] rounded-[8px] h-[38px]"
+              >
+                Tecnologías
               </Button>
-              <ShinyButton className="bg-white" text="Mis Proyectos" />
+              </a>
             </div>
           </header>
           <main className="container mx-auto overflow-x-hidden w-full relative px-4 py-16">
@@ -72,7 +86,7 @@ const Landing = () => {
               >
                 <Image
                   src="/placeholder.svg?height=200&width=200&text=JD"
-                  alt="Foto de perfil"
+                  alt=""
                   width={200}
                   height={200}
                   className="rounded-full mx-auto mb-8"
@@ -94,7 +108,7 @@ const Landing = () => {
                     Ver Proyectos
                   </a>
                   <a
-                    href="#contacto"
+                    href="https://wa.me/+573112425911?text=a"
                     className="bg-transparent hover:bg-white/10 text-white font-bold py-2 px-4 rounded-lg border border-white transition-colors duration-300"
                   >
                     Contactar
@@ -129,7 +143,7 @@ const Landing = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-slate-600/70 to-slate-800/90 backdrop-blur-[0.2px] border-gray-700/95 text-white border border-black rounded-lg p-4"
+                    className="   bg-gradient-to-br from-slate-600/70 to-slate-800/90 hover:to-slate-500 select-none backdrop-blur-[0.2px] border-gray-700/95 text-white border border-black rounded-lg p-4"
                   >
                     <p className="text-center font-semibold">{skill}</p>
                   </motion.div>
@@ -140,7 +154,8 @@ const Landing = () => {
 
           <footer className="mt-32 py-8 text-center bg-black/70 backdrop-blur-sm text-white">
             <p>
-              &copy; 2024 Juan Diego Rojas Desarrollador Full Stack. Todos los derechos reservados.
+              &copy; 2025 Juan Diego Rojas Desarrollador Full Stack. Todos los
+              derechos reservados.
             </p>
           </footer>
         </div>
